@@ -109,14 +109,14 @@ export function Navbar({ items = centerNavItems }: NavbarProps) {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>
-            <LucideComputer />
+            <LucideSunMoon />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[200px] gap-4">
               <li>
                 <NavigationMenuLink asChild>
                   <a href="#" className="flex-row items-center gap-2">
-                    <LucideSunMoon />
+                    <LucideComputer />
                     System
                   </a>
                 </NavigationMenuLink>
