@@ -48,7 +48,7 @@ interface NavbarProps {
 export function Navbar({ items = centerNavItems }: NavbarProps) {
   return (
     <NavigationMenu viewport={false}>
-      {/* right */}
+      {/* left */}
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger>Home</NavigationMenuTrigger>
@@ -105,10 +105,10 @@ export function Navbar({ items = centerNavItems }: NavbarProps) {
         </NavigationMenuItem>
       </NavigationMenuList>
 
-      {/* left */}
+      {/* right */}
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>
+          <NavigationMenuTrigger className="after:hidden">
             <LucideSunMoon />
           </NavigationMenuTrigger>
           <NavigationMenuContent>
