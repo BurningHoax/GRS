@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 
 function Home() {
   const [count, setCount] = useState(0)
-    return (<div className="max-w-[1280px] mx-auto p-8 text-center">
+    return (<div>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img
@@ -24,7 +24,7 @@ function Home() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="p-8">
+      <div>
         <Button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </Button>
