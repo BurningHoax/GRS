@@ -26,8 +26,8 @@ const centerNavItems: NavItem[] = [
       "A modal dialog that interrupts the user with important content and expects a response.",
   },
   {
-    title: "Conacts",
-    href: "/contacts",
+    title: "Contact Us",
+    href: "/contact", // to add
     description:
       "For sighted users to preview content available behind a link.",
   },

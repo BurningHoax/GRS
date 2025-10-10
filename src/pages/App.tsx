@@ -5,14 +5,14 @@ import { Navbar } from "@/components/nav-bar";
 function App() {
   return (
     <>
-      <header>
+      <header >
         <Navbar />
       </header>
       <main>
         <Home />
       </main>
-      <footer>
-        <p>made by BurningHoax</p>
+      <footer className = "text-right">
+        <p>Made by BurningHoax</p>
       </footer>
     </>
   );

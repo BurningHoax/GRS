@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 function Home() {
   const [count, setCount] = useState(0)
     return (<div>
-      <div>
+      <div className='flex justify-center'>
         <a href="https://vite.dev" target="_blank">
           <img
             src={viteLogo}
@@ -23,7 +23,7 @@ function Home() {
           />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1 className='text-center'>Vite + React</h1>
       <div>
         <Button onClick={() => setCount((count) => count + 1)}>
           count is {count}
