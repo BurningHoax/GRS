@@ -8,7 +8,7 @@ function App() {
 			<header className='flex flex-grow justify-between p-2'>
 				<Navbar />
 			</header>
-			<main className='h-svh'>
+			<main>
 				<Home />
 			</main>
 			<footer>
