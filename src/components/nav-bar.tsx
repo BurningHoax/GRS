@@ -1,7 +1,5 @@
-"use client";
-
 import * as React from "react";
-
+import { Link } from "react-router";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -11,9 +9,16 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { HomeIcon } from "lucide-react";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 
 const centerNavItems: NavItem[] = [
+	{
+		title: "Settings",
+		href: "/settings",
+		description:
+			"An overlay that covers the entire screen to bring focus to a specific task.",
+	},
 	{
 		title: "Products",
 		href: "/products",
@@ -45,9 +50,11 @@ export function Navbar({ items = centerNavItems }: NavbarProps) {
 		<>
 			<NavigationMenu viewport={false}>
 				<NavigationMenuList>
-					{/* left */}
+					{/* home */}
 					<NavigationMenuItem>
-						<NavigationMenuTrigger>Home</NavigationMenuTrigger>
+						<NavigationMenuTrigger>
+							<HomeIcon />
+						</NavigationMenuTrigger>
 						<NavigationMenuContent>
 							<ul className='grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
 								<li className='row-span-3'>
@@ -78,22 +85,14 @@ export function Navbar({ items = centerNavItems }: NavbarProps) {
 							</ul>
 						</NavigationMenuContent>
 					</NavigationMenuItem>
-					<NavigationMenuItem>
-						<NavigationMenuLink
-							asChild
-							className={navigationMenuTriggerStyle()}>
-							<a href='/settings'>Settings</a>
-						</NavigationMenuLink>
-					</NavigationMenuItem>
-
-					{/* center */}
+					{/* links */}
 					<NavigationMenuItem>
 						{items.map((item) => (
 							<NavigationMenuLink
 								key={item.href}
 								asChild
 								className={navigationMenuTriggerStyle()}>
-								<a href={item.href}>{item.title}</a>
+								<Link to={item.href}>{item.title}</Link>
 							</NavigationMenuLink>
 						))}
 					</NavigationMenuItem>

@@ -23,7 +23,7 @@ function Home() {
 					/>
 				</a>
 			</div>
-			<div className='flex flex-col p-8 gap-4'>
+			<div className='flex flex-col justify-center items-center gap-4'>
 				<span>Vite + React</span>
 				<Button onClick={() => setCount((count) => count + 1)}>
 					count is {count}
