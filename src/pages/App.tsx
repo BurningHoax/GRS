@@ -10,7 +10,7 @@ function App() {
 	return (
 		<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
 			<Router>
-				<header className='flex flex-grow justify-between p-2'>
+				<header className='relative z-50 flex flex-nowrap justify-between p-2'>
 					<Navbar />
 				</header>
 				<main>
