@@ -5,13 +5,13 @@ import Home from "@/pages/home/Home";
 function App() {
 	return (
 		<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
-			<header className='flex'>
+			<header className='flex flex-grow justify-between p-2'>
 				<Navbar />
 			</header>
-			<main>
+			<main className='h-svh'>
 				<Home />
 			</main>
-			<footer className='text-right'>
+			<footer>
 				<p>Made by BurningHoax</p>
 			</footer>
 		</ThemeProvider>
