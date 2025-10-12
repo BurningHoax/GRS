@@ -12,7 +12,8 @@ import {
 import { HomeIcon } from "lucide-react";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 
-const centerNavItems: NavItem[] = [
+type NavItems = { title: string; href: string; description: string };
+const links: NavItems[] = [
 	{
 		title: "Settings",
 		href: "/settings",
@@ -39,72 +40,7 @@ const centerNavItems: NavItem[] = [
 	},
 ];
 
-type NavItem = { title: string; href: string; description: string };
-
-interface NavbarProps {
-	items?: NavItem[];
-}
-
-export function Navbar({ items = centerNavItems }: NavbarProps) {
-	return (
-		<>
-			<NavigationMenu viewport={false}>
-				<NavigationMenuList>
-					{/* home */}
-					<NavigationMenuItem>
-						<NavigationMenuTrigger>
-							<HomeIcon />
-						</NavigationMenuTrigger>
-						<NavigationMenuContent>
-							<ul className='grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]'>
-								<li className='row-span-3'>
-									<NavigationMenuLink asChild>
-										<a
-											className='from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md'
-											href='/'>
-											<div className='mt-4 mb-2 text-lg font-medium'>
-												shadcn/ui
-											</div>
-											<p className='text-muted-foreground text-sm leading-tight'>
-												Beautifully designed components built with Tailwind CSS.
-											</p>
-										</a>
-									</NavigationMenuLink>
-								</li>
-								<HomeLinkItem href='/docs' title='Introduction'>
-									Re-usable components built using Radix UI and Tailwind CSS.
-								</HomeLinkItem>
-								<HomeLinkItem href='/docs/installation' title='Installation'>
-									How to install dependencies and structure your app.
-								</HomeLinkItem>
-								<HomeLinkItem
-									href='/docs/primitives/typography'
-									title='Typography'>
-									Styles for headings, paragraphs, lists...etc
-								</HomeLinkItem>
-							</ul>
-						</NavigationMenuContent>
-					</NavigationMenuItem>
-					{/* links */}
-					<NavigationMenuItem>
-						{items.map((item) => (
-							<NavigationMenuLink
-								key={item.href}
-								asChild
-								className={navigationMenuTriggerStyle()}>
-								<Link to={item.href}>{item.title}</Link>
-							</NavigationMenuLink>
-						))}
-					</NavigationMenuItem>
-				</NavigationMenuList>
-			</NavigationMenu>
-			{/* right */}
-			<ModeToggle />
-		</>
-	);
-}
-
-function HomeLinkItem({
+function NavLink({
 	title,
 	children,
 	href,
@@ -113,13 +49,64 @@ function HomeLinkItem({
 	return (
 		<li {...props}>
 			<NavigationMenuLink asChild>
-				<a href={href}>
+				<Link to={href}>
 					<div className='text-sm leading-none font-medium'>{title}</div>
 					<p className='text-muted-foreground line-clamp-2 text-sm leading-snug'>
 						{children}
 					</p>
-				</a>
+				</Link>
 			</NavigationMenuLink>
 		</li>
 	);
 }
+
+interface NavbarProps {
+	items?: NavItems[];
+}
+
+export const Navbar = ({ items = links }: NavbarProps) => {
+	return (
+		<div className='flex items-center justify-between w-full px-4 py-2 border-b'>
+			<NavigationMenu>
+				<NavigationMenuList>
+					{/* Home Link */}
+					<NavigationMenuItem>
+						<NavigationMenuLink
+							asChild
+							className={navigationMenuTriggerStyle()}>
+							<Link to='/'>
+								<HomeIcon className='h-4 w-4 text-foreground' />
+							</Link>
+						</NavigationMenuLink>
+					</NavigationMenuItem>
+
+					{/* Dropdown Menu */}
+					<NavigationMenuItem>
+						<NavigationMenuTrigger>Menu</NavigationMenuTrigger>
+						<NavigationMenuContent>
+							<ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]'>
+								{items.map((item) => (
+									<NavLink key={item.href} title={item.title} href={item.href}>
+										{item.description}
+									</NavLink>
+								))}
+							</ul>
+						</NavigationMenuContent>
+					</NavigationMenuItem>
+
+					{/* Docs Link */}
+					<NavigationMenuItem>
+						<NavigationMenuLink
+							asChild
+							className={navigationMenuTriggerStyle()}>
+							<Link to='/docs'>Docs</Link>
+						</NavigationMenuLink>
+					</NavigationMenuItem>
+				</NavigationMenuList>
+			</NavigationMenu>
+
+			{/* Button */}
+			<ModeToggle />
+		</div>
+	);
+};
