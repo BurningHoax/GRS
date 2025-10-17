@@ -32,7 +32,7 @@ const centerNavItems: NavItem[] = [
       "For sighted users to preview content available behind a link.",
   },
   {
-    title: "Cart",
+    title: "View Cart",
     href: "/cart",
     description:
       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
